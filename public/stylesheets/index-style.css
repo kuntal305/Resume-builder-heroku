@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.success-message {
+  max-width: 40rem;
+  margin: 0 auto;
+  text-align: center;
+  transform: translateY(-20rem);
+  -webkit-transform: translateY(-20rem);
+  -moz-transform: translateY(-20rem);
+  -ms-transform: translateY(-20rem);
+  -o-transform: translateY(-20rem);
+}
+
+.warning-message {
+  max-width: 20rem;
+  margin: 0 auto;
+  text-align: center;
+  transform: translateY(-20rem);
+  -webkit-transform: translateY(-20rem);
+  -moz-transform: translateY(-20rem);
+  -ms-transform: translateY(-20rem);
+  -o-transform: translateY(-20rem);
+}
+
+
+/* ============ HEADER ============ */
+
+
+.land-header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/Homepage-1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 45.5rem;
+  background-attachment: fixed;
+  padding: 0;
+}
+
+.land-header-text {
+  margin: auto;
+  padding: 9rem;
+  font-size: 3rem;
+  color: lightgray;
+  text-align: center;
+  font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+.land-header-text h1 {
+  color: white;
+  text-align: center;
+}
+
+.land-login {
+  background-color: rgba(224, 219, 195, 0.3);
+  border: 1px solid black;
+  width: 30rem;
+  height: 25rem;
+  margin: 0 auto;
+  text-align: center;
+  transform: translateY(-30%);
+  -webkit-transform: translateY(-30%);
+  -moz-transform: translateY(-30%);
+  -ms-transform: translateY(-30%);
+  -o-transform: translateY(-30%);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.land-login h3 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.land-login h3:nth-child(2) {
+  display: none;
+}
+
+.land-login button {
+  margin: auto;
+  padding: auto;
+}
+
+.land-login-form {
+  width: 100%;
+  max-width: 20.6rem;
+  margin: auto;
+}
+
+.land-login-form .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 0.6em;
+}
+
+.land-login-form input[type="email"] {
+  margin-bottom: -0.06em;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.land-login-form input[type="password"] {
+  margin-bottom: 0.625em;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.land-login-form button {
+  margin-bottom: 1.25em;
+}
+
+.land-signup-form {
+  width: 100%;
+  max-width: 20.6rem;
+  margin: auto;
+  display: none;
+}
+
+.land-signup-form .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 0.6em;
+}
+
+.land-signup-form input[type="email"] {
+  margin-bottom: -0.06em;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.land-signup-form input[type="password"] {
+  margin-bottom: 0.625em;
+}
+
+.land-signup-form input[name="signup-pwd"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.land-signup-form .row {
+  padding: 0;
+  margin-top: -0.5rem;
+}
+
+.land-signup-form input[type="text"] {
+  margin-bottom: 0.625em;
+}
+
+.land-signup-form button {
+  margin-bottom: 1em;
+}
+
+#login {
+  display: none;
+}
+
+/* ============ BODY ============ */
+
+.index-row {
+  padding-top: 3.12em;
+}
+
+.creator-card .card {
+  width: 15.6rem;
+  height: 21.8rem;
+  z-index: 1;
+  margin: auto;
+}
+
+
+/* ============ FOOTER ============ */
+
+footer {
+  background-color: black;
+}
