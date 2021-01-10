@@ -36,84 +36,96 @@
             <label for=""><b>Nationality:</b></label>&nbsp;
             <span>{{basic.nationality}}</span>
         </div>
-        <div>
-            <label for=""><b>Passport No.:</b></label>&nbsp;
-            <span>{{basic.passport_no}}</span>
-        </div>
-        <div>
-            <label for=""><b>PAN:</b></label>&nbsp;
-            <span>{{basic.pan_no}}</span>
-        </div>
-        <div>
-            <label for=""><b>LinkedIn url:</b></label>&nbsp;
-            <span>{{basic.linkedin_url}}</span>
-        </div>
+        {{#if basic.passport_no}}
+            <div>
+                <label for=""><b>Passport No.:</b></label>&nbsp;
+                <span>{{basic.passport_no}}</span>
+            </div>
+        {{/if}}
+        {{#if basic.pan_no}}
+            <div>
+                <label for=""><b>PAN:</b></label>&nbsp;
+                <span>{{basic.pan_no}}</span>
+            </div>
+        {{/if}}
+        {{#if basic.linked_url}}
+            <div>
+                <label for=""><b>LinkedIn url:</b></label>&nbsp;
+                <span>{{basic.linkedin_url}}</span>
+            </div>
+        {{/if}}
     </div>
 
-    <div>
-        <h2>Education Details</h2>
-    </div>
-    {{#each education}}    
+    {{#if education}}
         <div>
-            <div>
-                <label for=""><b>Degree:</b></label>&nbsp;
-                <span>{{degree}}</span>
-            </div>
-            <div>
-                <label for=""><b>Institute Name:</b></label>&nbsp;
-                <span>{{inst_name}}</span>
-            </div>
-            <div>
-                <label for=""><b>Board/University:</b></label>&nbsp;
-                <span>{{authority}}</span>
-            </div>
-            <div>
-                <label for=""><b>Start Year:</b></label>&nbsp;
-                <span>{{start_year}}</span>&nbsp;&nbsp;&nbsp;
-                <label for=""><b>End Year:</b></label>&nbsp;
-                <span>{{end_year}}</span>
-            </div>
-            <div>
-                <label for=""><b>Percentage/CGPA:</b></label>&nbsp;
-                <span>{{marks}}</span>
-            </div>
+            <h2>Education Details</h2>
         </div>
-    {{/each}}
+        {{#each education}}    
+            <div>
+                <div>
+                    <label for=""><b>Degree:</b></label>&nbsp;
+                    <span>{{degree}}</span>
+                </div>
+                <div>
+                    <label for=""><b>Institute Name:</b></label>&nbsp;
+                    <span>{{inst_name}}</span>
+                </div>
+                <div>
+                    <label for=""><b>Board/University:</b></label>&nbsp;
+                    <span>{{authority}}</span>
+                </div>
+                <div>
+                    <label for=""><b>Start Year:</b></label>&nbsp;
+                    <span>{{start_year}}</span>&nbsp;&nbsp;&nbsp;
+                    <label for=""><b>End Year:</b></label>&nbsp;
+                    <span>{{end_year}}</span>
+                </div>
+                <div>
+                    <label for=""><b>Percentage/CGPA:</b></label>&nbsp;
+                    <span>{{marks}}</span>
+                </div>
+            </div>
+        {{/each}}
+    {{/if}}
 
-    <div>
-        <h2>Project</h2>
-    </div>
-
-
-    {{#each project}}
+    {{#if project}}
         <div>
-            <div>
-                <label for=""><b>Project Name:</b></label>&nbsp;
-                <span>{{project_name}}</span>
-            </div>
-            <div>
-                <label for=""><b>Organization Name:</b></label>&nbsp;
-                <span>{{org_name}}</span>
-            </div>
-            <div>
-                <label for=""><b>Start Year:</b></label>&nbsp;
-                <span>{{start_date}}</span>&nbsp;&nbsp;&nbsp;
-                <label for=""><b>End Year:</b></label>&nbsp;
-                <span>{{end_date}}</span>
-            </div>
-            <div>
-                <label for=""><b>Description:</b></label>&nbsp;
-                <span>{{project_desc}}</span>
-            </div>
+            <h2>Project</h2>
         </div>
-    {{/each}}
+
+
+        {{#each project}}
+            <div>
+                <div>
+                    <label for=""><b>Project Name:</b></label>&nbsp;
+                    <span>{{project_name}}</span>
+                </div>
+                <div>
+                    <label for=""><b>Organization Name:</b></label>&nbsp;
+                    <span>{{org_name}}</span>
+                </div>
+                <div>
+                    <label for=""><b>Start Year:</b></label>&nbsp;
+                    <span>{{start_date}}</span>&nbsp;&nbsp;&nbsp;
+                    <label for=""><b>End Year:</b></label>&nbsp;
+                    <span>{{end_date}}</span>
+                </div>
+                {{#if project_desc}}
+                    <div>
+                        <label for=""><b>Description:</b></label>&nbsp;
+                        <span>{{project_desc}}</span>
+                    </div>
+                {{/if}}
+            </div>
+        {{/each}}
+    {{/if}}
 
     <div>
-        <h2>Skills</h2>
+        <h2>Miscellanous Info</h2>
     </div>
     <div>
         <div>
-            <label for=""><b>Technical Skills:</b></label>&nbsp;
+            <label for=""><b>Skills:</b></label>&nbsp;
             <span>{{basic.skills}}</span>
         </div>
         <div>
@@ -133,33 +145,35 @@
             <span>{{basic.objective}}</span>
         </div>
     </div>
-
-    <div>
-        <h2>Work</h2>
-    </div>
-    {{#each work}}
+    {{#if work}}
         <div>
-            <div>
-                <label for=""><b>Organization Name:</b></label>&nbsp;
-                <span>{{org_name}}</span>
-            </div>
-            <div>
-                <label for=""><b>Type:</b></label>&nbsp;
-                <span>{{type}}</span>
-            </div>
-            <div>
-                <label for=""><b>Start Year:</b></label>&nbsp;
-                <span>{{start_date}}</span>&nbsp;&nbsp;&nbsp;
-                <label for=""><b>End Year:</b></label>&nbsp;
-                <span>{{end_date}}</span>
-            </div>
-            <div>
-                <label for=""><b>Resposibility:</b></label>&nbsp;
-                <span>{{responsibility}}</span>
-            </div>
+            <h2>Work</h2>
         </div>
-    {{/each}}
-
+        {{#each work}}
+            <div>
+                <div>
+                    <label for=""><b>Organization Name:</b></label>&nbsp;
+                    <span>{{org_name}}</span>
+                </div>
+                <div>
+                    <label for=""><b>Type:</b></label>&nbsp;
+                    <span>{{type}}</span>
+                </div>
+                <div>
+                    <label for=""><b>Start Year:</b></label>&nbsp;
+                    <span>{{start_date}}</span>&nbsp;&nbsp;&nbsp;
+                    <label for=""><b>End Year:</b></label>&nbsp;
+                    <span>{{end_date}}</span>
+                </div>
+                {{#if responsibility}}
+                    <div>
+                        <label for=""><b>Resposibility:</b></label>&nbsp;
+                        <span>{{responsibility}}</span>
+                    </div>
+                {{/if}}
+            </div>
+        {{/each}}
+    {{/if}}
     <div>
         <h2>End Note</h2>
     </div>
