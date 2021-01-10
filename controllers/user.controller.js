@@ -198,6 +198,20 @@ const userController = {
             if (err) throw err;
             res.send({basic: result[0][0], education: result[1], project: result[2], work: result[3]});
         })
+    },
+
+    viewResume (req, res) {
+        userModel.getCvdetails(req.params.id, (err, result) => {
+            if (err) throw err;
+            req.session.result = result;
+            // res.render('viewresume',{basic: result[0][0], education: result[1], project: result[2], work: result[3]});
+            res.redirect('/userprofile/viewresume');
+        })
+    },
+
+    redirectToResume (req, res) {
+        var result = req.session.result;
+        res.render('viewresume', {basic: result[0][0], education: result[1], project: result[2], work: result[3]});
     }
 }
 

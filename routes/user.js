@@ -10,6 +10,8 @@ router.get('/', isLoggedIn, (req, res) => {
 
 router.get('/user_info', isLoggedIn, userController.userInfo);
 
+router.get('/viewresume/user_info', isLoggedIn, userController.userInfo);
+
 router.get('/viewprofile', isLoggedIn, (req, res) => {
     console.log('yes')
     res.render('viewprofile', {firstname: 'Kuntal', lastname: 'Mitra'});
@@ -36,6 +38,9 @@ router.post('/saveendnote', isLoggedIn, userController.saveEndNote);
 
 router.get('/getcvdata/:id', isLoggedIn, userController.getCvdetails);
 
+router.get('/viewresume/:id', isLoggedIn, userController.viewResume);
+
+router.get('/viewresume', isLoggedIn, userController.redirectToResume);
 
 
 function isLoggedIn(req, res, next) {

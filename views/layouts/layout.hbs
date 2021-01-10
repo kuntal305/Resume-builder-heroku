@@ -20,8 +20,10 @@
     <link rel="stylesheet" href="/stylesheets/viewprofile-style.css">
     <link rel="stylesheet" href="/stylesheets/misc-style.css">
     <link rel="stylesheet" href="/stylesheets/end-note-style.css">
+    <link rel="stylesheet" href="/stylesheets/template-form-style.css">
 
-    <script>
+
+    {{!-- <script>
       function getUrlVars() {
           var vars = [], hash;
           var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -35,9 +37,35 @@
 
         var templateId = getUrlVars()["templateId"];
 
-    </script>
 
-    <link rel="stylesheet" href="/stylesheets/template-form-style.css">
+        function loadjscssfile(filename, filetype) {
+
+            if (filetype == "js") { //if filename is a external JavaScript file
+              var fileref = document.createElement('script')
+              fileref.setAttribute("type", "text/javascript")
+              fileref.setAttribute("src", filename)
+            }
+            else if (filetype == "css") { //if filename is an external CSS file
+              var fileref = document.createElement("link")
+              fileref.setAttribute("rel", "stylesheet")
+              fileref.setAttribute("type", "text/css")
+              fileref.setAttribute("href", filename)
+            }
+            if (typeof fileref != "undefined")
+              document.getElementsByTagName("head")[0].appendChild(fileref)
+          }
+          if(templateId == 1) {
+            alert('1');
+            loadjscssfile("1.css", "css") ////dynamically load and add this .css file
+
+          } else {
+            alert('2');
+            loadjscssfile("2.css", "css") ////dynamically load and add this .css file
+
+          }
+
+          
+    </script> --}}
 
   </head>
   <body>
