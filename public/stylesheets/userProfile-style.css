@@ -64,3 +64,7 @@
 .form-div {
     padding: 2rem;;
 }
+
+.continue-spinner {
+  display: none;
+}

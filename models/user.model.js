@@ -6,12 +6,15 @@ const model = {
     signup: (input, cb) => {
         return db.query('CALL user_signup(?, ?, ?, ?)', [input.fname, input.lname, input.email, input.password], cb);
     },
+    
     login: (input, cb) => {
         return db.query('CALL user_login(? ,?)', [input.email, input.password],cb);
     },
+
     findUserByEmail: (email, cb) => {
         return db.query('SELECT id, first_name, last_name, email, password FROM user WHERE email = ?', [email], cb);
     },
+
     findUserById: (id, cb) => {
         return db.query('SELECT id, first_name, last_name, email, password FROM user WHERE id = ?', [id], cb);
     },
@@ -55,6 +58,10 @@ const model = {
 
     getCvdetails: (id, cb) => {
         return db.query('CALL fetch_cv_data(?)', [id], cb);
+    },
+
+    validateCvData: (id, cb) => {
+        return db.query('CALL validate_cv_data(?)', [id], cb);
     }
 }
 

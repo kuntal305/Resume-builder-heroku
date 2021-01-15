@@ -12,12 +12,6 @@ router.get('/user_info', isLoggedIn, userController.userInfo);
 
 router.get('/viewresume/user_info', isLoggedIn, userController.userInfo);
 
-router.get('/viewprofile', isLoggedIn, (req, res) => {
-    console.log('yes')
-    res.render('viewprofile', {firstname: 'Kuntal', lastname: 'Mitra'});
-})
-
-
 router.post('/savebasicinfo', isLoggedIn, userController.saveBasicInfo);
 
 router.get('/checkbasicinfo/:id', isLoggedIn, userController.checkBasicInfo);
@@ -41,6 +35,8 @@ router.get('/getcvdata/:id', isLoggedIn, userController.getCvdetails);
 router.get('/viewresume/:id', isLoggedIn, userController.viewResume);
 
 router.get('/viewresume', isLoggedIn, userController.redirectToResume);
+
+router.get('/validatecvdata/:id', isLoggedIn, userController.validateCvData);
 
 
 function isLoggedIn(req, res, next) {

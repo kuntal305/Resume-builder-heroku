@@ -10,16 +10,14 @@ const flash = require('express-flash');
 const {v4: uuidv4} = require('uuid');
 
 const app = express();
-const http = require('http');
 
 
 const passportConfig = require('./passport');
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
+const profileRouter = require('./routes/profile');
 
 const handlebars = require('express-handlebars');
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -58,6 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/userprofile', userRouter);
+app.use('/viewprofile', profileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

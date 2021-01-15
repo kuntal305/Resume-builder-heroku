@@ -29,13 +29,20 @@
             <div class="collapse" id="endnote" data-parent="#form-body">{{>endnoteform}}</div>
             
             <div class="mt-5 text-center">
-                <button class="btn btn-lg btn-outline-success" id="proceed">Continue to next step..</button>
+                <button class="btn btn-lg btn-outline-success" id="proceed">Continue to next step...</button>
+                <div class="spinner-grow text-danger continue-spinner" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+                <div class="spinner-grow text-warning continue-spinner" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+                <div class="spinner-grow text-success continue-spinner" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
             </div>
         </div>
 
-        <div class="container template-body" id="template-body">
-            {{>templateform}}
-        </div>
+        
 
         
     </div>
@@ -46,3 +53,4 @@
 {{>education-modal}}
 {{>project-modal}}
 {{>work-modal}}
+{{>templateselection-modal}}

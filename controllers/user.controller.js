@@ -201,17 +201,30 @@ const userController = {
     },
 
     viewResume (req, res) {
+        var templateId = req.query.templateId;
         userModel.getCvdetails(req.params.id, (err, result) => {
             if (err) throw err;
             req.session.result = result;
             // res.render('viewresume',{basic: result[0][0], education: result[1], project: result[2], work: result[3]});
-            res.redirect('/userprofile/viewresume');
+            res.redirect('/userprofile/viewresume?templateId=' + templateId);
         })
     },
 
     redirectToResume (req, res) {
         var result = req.session.result;
-        res.render('viewresume', {basic: result[0][0], education: result[1], project: result[2], work: result[3]});
+        res.render('viewresume', {basic: result[0][0], education: result[1], project: result[2], work: result[3], firstname: req.user.first_name, lastname: req.user.last_name});
+    },
+
+    validateCvData (req, res) {
+        userModel.validateCvData(req.params.id, (err, result) => {
+            if (err) throw err;
+
+            var validated_res = {};
+            result[0].forEach((r) => {
+                validated_res[r.table_name] = r.REC_CNT;
+            })
+            res.send(validated_res);
+        })
     }
 }
 

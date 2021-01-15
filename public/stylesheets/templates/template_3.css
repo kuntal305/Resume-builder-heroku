@@ -1,0 +1,115 @@
+
+#template-data {
+	font-family: Tahoma;
+	margin-top: 1%;
+	-webkit-print-color-adjust: exact !important;
+}
+
+#temp-main {
+	max-height: 30%;
+	/* border-top: 1px solid rgb(19, 19, 18);
+	border-bottom: 1px solid rgb(5, 5, 5); */
+	background-color: #6d7379;
+	color: white;
+	padding-left: 1%;
+	padding-bottom: 0.5%;
+	padding-top: 0.5%;
+	font-size: 100%;
+	/* margin-top:3%; */
+}
+
+/* #header{
+	margin-top:3%;
+	margin-bottom:-3%;
+	color:#132b42;
+} */
+
+.temp-year {
+	width: 10%;
+}
+
+.temp-institute {
+	width: 40%;
+
+}
+
+.temp-course {
+	width: 35%;
+
+}
+
+.temp-percent {
+	width: 30%;
+
+}
+
+#template-data ul {
+	margin-left: 4%;
+}
+
+.temp-data {
+	float: left;
+}
+
+#temp-disclaimer {
+	width: 100%;
+	padding-bottom: 10%;
+
+}
+
+.temp-table {
+	/* border-bottom:2px solid #0c0e0d; */
+	margin-top: 2%;
+
+}
+
+#template-data h2 {
+	color: black;
+	margin-top: 0%;
+}
+
+/* #temp-declaration {
+	border: none;
+	margin-top: 3%;
+	background-color: rgb(196, 198, 199);
+	
+} */
+
+#template-data th {
+	text-align: center;
+	color: black;
+}
+
+#template-data th,
+#template-data td,
+#template-data table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 10px;
+}
+
+#template-data table {
+
+	width: 100%;
+	margin-bottom: 2%;
+}
+
+#temp-heading {
+	background-color: rgb(196, 198, 199);
+	font-family: Calibri;
+	font-weight: bolder;
+
+}
+
+#template-data  span {
+	font-weight: bold;
+	color: black;
+}
+
+/* .temp-sign
+{
+	float: right;
+	
+} */
+
+
