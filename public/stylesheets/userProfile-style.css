@@ -34,13 +34,14 @@
   background-color: rgb(155, 181, 218);
   color: #444;
   cursor: pointer;
-  padding: 0.7rem;
+  padding: 1rem;
   width: 100%;
-  border: none;
+  border: 2px solid #fffcfc;
   text-align: left;
   outline: none;
   font-size: 0.8rem;
   transition: 0.4s;
+  font-weight: bold;
 }
 
 .accordion-cs:focus, .accordion-cs:active, .accordion-cs:hover {
@@ -49,7 +50,7 @@
 
 .accordion-cs:after {
   content: '\002B';
-  color: #777;
+  color: rgb(45, 44, 44);
   font-weight: bold;
   float: right;
   margin-left: 5px;

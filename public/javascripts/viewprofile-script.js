@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     // $('.name').hide();
     // $('#saveProfileName, #cancelProfileName').hide();
 

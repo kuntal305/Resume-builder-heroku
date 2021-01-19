@@ -3,7 +3,6 @@ var router = express.Router();
 var userController = require('.././controllers/user.controller');
 var mainController = require('../controllers/main.controller');
 var profileController = require('../controllers/profile.controller');
-var passport = require('passport');
 
 
 router.get('/', isLoggedIn, profileController.viewProfile);
@@ -12,6 +11,7 @@ router.get('/user_info', isLoggedIn, profileController.getUserId);
 
 router.post('/changepassword', profileController.changePassword);
 
+router.post('/uploadprofilephoto', isLoggedIn, profileController.uploadProfilePhoto);
 
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {

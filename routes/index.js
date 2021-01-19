@@ -2,21 +2,12 @@ var express = require('express');
 var router = express.Router();
 var userController = require('.././controllers/user.controller');
 var mainController = require('../controllers/main.controller');
+var emailController = require('../controllers/email.controller');
 var passport = require('passport');
-
 
 /* GET home page. */
 router.get('/', isNotLoggedIn, mainController.getHomePage);
-// router.get('/', (req, res) => {
-//     res.render('userprofile', {firstname: 'Kuntal', lastname: 'Mitra'})
-// })
 
-
-
-// router.post('/savebasic', (req, res) => {
-//     console.log(req.body);
-//     res.send(req.body.name);
-// })
 
 router.get('/login', isNotLoggedIn, mainController.redirectToHome);
 
@@ -29,17 +20,14 @@ router.post('/login', passport.authenticate('login', {
 
 router.post('/signup', userController.signup);
 
-// router.get('/userprofile', isLoggedIn, (req, res) => {
-//     var x = req;
-//     console.log(req);
-//     res.render('userProfile', {firstname: req.user.first_name, lastname: req.user.last_name})
-// });
-
 router.get('/logout', isLoggedIn, (req, res) => {
     req.logout();
     res.redirect('/');
 });
 
+router.get('/forgotpassword', mainController.forgotPassword)
+
+router.post('/forgotpassword/sendemail', emailController.sendEmail);
 
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {

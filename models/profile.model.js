@@ -8,6 +8,10 @@ const model = {
 
     changePassword: (id, password, cb) => {
         return db.query('CALL change_password(?, ?)', [id, password], cb);
+    },
+
+    uploadProfilePhoto: (id, image, cb) => {
+        return db.query('CALL pr_upload_profile_pic(2147483647, ?)', [image], cb);
     }
 }
 

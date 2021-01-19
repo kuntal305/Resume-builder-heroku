@@ -161,6 +161,10 @@
   display: none;
 }
 
+.land-login-form a {
+  color: rgb(47, 47, 226);
+}
+
 /* ============ BODY ============ */
 
 .index-row {

@@ -1,5 +1,23 @@
 const profileModel = require('../models/profile.model');
+const helpers = require('../helpers');
+
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const { profile } = require('console');
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'public/images/');
+    },
+
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const maxSize = 3 * 1024 * 1024;
 
 const profileController = {
     viewProfile (req, res) {
@@ -23,6 +41,7 @@ const profileController = {
                 res.send({result: 1})
             } else {
                 bcrypt.compare(oldPass, rows[0].password, (error, isMatch) => {
+                    console.log("PASSWORD: " + rows[0].password);
                     console.log('Error');
                     if (error) throw err;
                     if (!isMatch) {
@@ -46,6 +65,48 @@ const profileController = {
                 })
             }
             
+        })
+    },
+
+    uploadProfilePhoto (req, res) {
+        
+        // let upload = multer({
+        //     storage: storage,  
+        //     limits: { fileSize: maxSize },
+        //     helpers: helpers.imageFilter 
+        // }).single("profilephoto");
+
+        // upload(req, res, function(err) {
+        //     // req.file contains information of uploaded file
+        //     // req.body contains information of text fields, if there were any
+
+        //     if (req.fileValidationError) {
+        //         return res.send(req.fileValidationError);
+        //     }
+        //     else if (!req.file) {
+        //         return res.send('Please select an image to upload');
+        //     }
+        //     else if (err instanceof multer.MulterError) {
+        //         return res.send(err);
+        //     }
+        //     else if (err) {
+        //         return res.send(err);
+        //     }
+
+        //     // Display uploaded image for user validation
+        //     res.send(`You have uploaded this image: <hr/><img src="${req.file.path}" width="500"><hr /><a href="./">Upload another image</a>`);
+        // });
+
+        // var image = fs.readFileSync(req.file, 'base64');
+
+        profileModel.uploadProfilePhoto(req.body.id, image, (err, result) => {
+            if (err) throw err;
+
+            if(result[0][0] == 1) {
+                res.send("Success");
+            } else {
+                res.send("Failure");
+            }
         })
     }
 }
