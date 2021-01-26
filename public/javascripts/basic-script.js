@@ -4,6 +4,7 @@ $(document).ready(function () {
     var basicClickCounter = 0;
 
     $('#saveBasic').click(function () {
+        const maxSize = 50 * 1024;
         
         var basicInfo = {};
 
@@ -25,25 +26,42 @@ $(document).ready(function () {
             basicInfo.passport = $('#passport').val();
             basicInfo.pan = $('#pan').val();
             basicInfo.linkedin = $('#linkedin').val();
-            basicInfo.cv_photo = 'aa';
 
-        
-            console.log(basicInfo);
             
-            
-            $.post({
-                url: window.location + "/savebasicinfo",
-                data: basicInfo
-            })
-            .done(function () {
-                $('#basic-form').hide();
-                $('.basic-success-1').fadeIn();
-                basicCounter = 1;
-            })
-            .fail(function () {
-                $('#basic-form').hide();
-                $('.basic-fail').fadeIn();
-            });
+            var cvPhoto = $('#cvphoto').prop('files')[0];
+
+            if(!cvPhoto) {
+                alert('Please Choose an image first!!');
+            } else if(cvPhoto.size > maxSize) {
+                alert('File Size Cannot Exceed 50 KB');
+            } else {
+                var reader = new FileReader();
+
+                reader.onload = function() {
+                    // var base64data = reader.result.split('data:image/*;base64,');
+                    console.log(reader.result.length);
+                    basicInfo.cv_photo = reader.result;
+                    console.log(basicInfo);
+                    $.post({
+                        url: window.location + "/savebasicinfo",
+                        data: basicInfo
+                    })
+                    .done(function () {
+                        $('#basic-form').hide();
+                        $('.basic-success-1').fadeIn();
+                        basicCounter = 1;
+                    })
+                    .fail(function () {
+                        $('#basic-form').hide();
+                        $('.basic-fail').fadeIn();
+                    });
+                }
+
+                reader.readAsDataURL(cvPhoto);
+
+
+                
+            } 
         })
         .fail(function () {
             $('#basic-form').hide();

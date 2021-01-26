@@ -10,23 +10,22 @@
         <div class="container profile">
             <div class="row mb-3">
                 <div class="col text-center">
-                    <img src="https://www.generationsforpeace.org/wp-content/uploads/2016/10/dummy-member.jpg" class="avatar"
-                        loading="lazy">
+                    <img class="avatar" loading="lazy" id="profilephoto">
             
                 </div>
             </div>
-            <form action="/viewprofile/uploadprofilephoto" method="POST" enctype="multipart/form-data">
+            <form action="">
                 <div class="row mb-3">
                     <div class="col text-center">
-                        <input type="file" name="profilephoto" id="profilephoto" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col text-center">
-                        <button class="btn btn-outline-primary" type="submit">Change Profile Picture</button>
+                        <input type="file" name="uploadprofilephoto" id="uploadprofilephoto" accept="image/*">
                     </div>
                 </div>
             </form>
+            <div class="row">
+                <div class="col text-center">
+                    <button class="btn btn-outline-primary" type="button" id="changeprofilephoto">Change Profile Picture</button>
+                </div>
+            </div>
             <hr>
             <div class="row mb-3">
                 <label for="profileName" class="col-sm-2"><strong>Name:</strong></label>

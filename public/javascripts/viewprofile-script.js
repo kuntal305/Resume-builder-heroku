@@ -9,6 +9,14 @@ $(document).ready(function () {
         $.get(window.location + '/user_info')
         .done(function(user) {
             localStorage.setItem('uid', user.id);
+            console.log(user);
+            //  var reader = new FileReader();
+            // reader.readAsDataURL(user.profile_image); 
+            // reader.onloadend = function() {
+            //     var base64data = reader.result;                
+            //     console.log(base64data);
+            // }
+            $('#profilephoto').attr('src', user.profile_image);
         })
     }
 
@@ -91,4 +99,38 @@ $(document).ready(function () {
         $('#profileOldPass, #profileNewPass').val('');
     })
 
+
+    const maxSize = 50 * 1024;
+    $('#changeprofilephoto').click(function() {
+        var file = $('#uploadprofilephoto').prop('files')[0];
+        if(!file) {
+            alert('Please Choose an image first!!');
+        } else if(file.size > maxSize) {
+            alert('File Size Cannot Exceed 50 KB');
+        } else {
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                // var base64data = reader.result.split('data:image/*;base64,');
+                console.log(reader.result.length);
+                $.post({
+                    url: window.location + '/uploadprofilephoto',
+                    data: {
+                        id: localStorage.getItem('uid'),
+                        image: reader.result
+                    }
+                })
+                .done(function() {
+                    $('#profilephoto').attr('src', reader.result);
+                    alert('Success');
+                })  
+                .fail(function() {
+                    alert('An Error Occurred! Please Try again');
+                })
+            }
+
+            reader.readAsDataURL(file);
+        }
+        
+    })
 });

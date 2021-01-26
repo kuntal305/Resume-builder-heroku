@@ -15,11 +15,11 @@ const model = {
     },
 
     findUserById: (id, cb) => {
-        return db.query('SELECT id, first_name, last_name, email, password FROM user WHERE id = ?', [id], cb);
+        return db.query('SELECT id, first_name, last_name, email, password, profile_image FROM user WHERE id = ?', [id], cb);
     },
 
     saveBasic: (input, cb) => {
-        console.log('uid: ' + input.uid);
+        console.log('photo: ' + input.cv_photo);
         return db.query('CALL save_basic_info(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [input.uid, input.first_name, input.last_name, input.email, input.contact, input.marital_status, input.address, input.sex, input.linkedin, input.dob, input.nationality, input.passport, input.pan, input.cv_photo], cb);
     },
 
