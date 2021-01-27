@@ -1,7 +1,9 @@
 <div id="template-contents">
     <div id="template-data">
         <div id="temp-main">
-            {{!-- <img src="" alt=""> --}}
+            {{#if basic.profile_image}}
+                <img src={{basic.profile_image}} alt="" id="cvphoto">
+            {{/if}}
             <h1 id="temp-name">{{basic.first_name}} {{basic.last_name}}</h1>
             <p>{{basic.email}} | {{basic.contact_no}}</p>
             {{#if basic.linkedin_url}}
