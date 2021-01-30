@@ -10,12 +10,6 @@ $(document).ready(function () {
         .done(function(user) {
             localStorage.setItem('uid', user.id);
             console.log(user);
-            //  var reader = new FileReader();
-            // reader.readAsDataURL(user.profile_image); 
-            // reader.onloadend = function() {
-            //     var base64data = reader.result;                
-            //     console.log(base64data);
-            // }
             $('#profilephoto').attr('src', user.profile_image);
         })
     }
@@ -101,36 +95,75 @@ $(document).ready(function () {
 
 
     const maxSize = 50 * 1024;
-    $('#changeprofilephoto').click(function() {
+
+    $('#changeprofilephoto').on("click", function() {
+        console.log('form')
+        var formData = new FormData();
         var file = $('#uploadprofilephoto').prop('files')[0];
+        formData.append('file', file);
         if(!file) {
             alert('Please Choose an image first!!');
         } else if(file.size > maxSize) {
             alert('File Size Cannot Exceed 50 KB');
         } else {
-            var reader = new FileReader();
 
-            reader.onload = function() {
-                // var base64data = reader.result.split('data:image/*;base64,');
-                console.log(reader.result.length);
-                $.post({
-                    url: window.location + '/uploadprofilephoto',
-                    data: {
-                        id: localStorage.getItem('uid'),
-                        image: reader.result
+            $.ajax({
+                type: 'put',
+                url: window.location + '/uploadprofilephoto/' + localStorage.getItem('uid'),
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if (data.success == 1) {
+                        var imgSrc = `data:image/${data.ext};base64,${data.string}`;
+                        console.log(imgSrc);
+                        $('#profilephoto').attr('src', imgSrc);
+                    } else if (data.success == 0) {
+                        alert('Please upload a valid photo')
                     }
-                })
-                .done(function() {
-                    $('#profilephoto').attr('src', reader.result);
-                    alert('Success');
-                })  
-                .fail(function() {
-                    alert('An Error Occurred! Please Try again');
-                })
-            }
-
-            reader.readAsDataURL(file);
+                },
+                fail: function(message) {
+                    alert(message)
+                }
+            })
         }
-        
     })
+
+    
+   
+   
+   
+   
+    // $('#changeprofilephoto').click(function() {
+    //     var file = $('#uploadprofilephoto').prop('files')[0];
+    //     if(!file) {
+    //         alert('Please Choose an image first!!');
+    //     } else if(file.size > maxSize) {
+    //         alert('File Size Cannot Exceed 50 KB');
+    //     } else {
+    //         var reader = new FileReader();
+
+    //         reader.onload = function() {
+    //             // var base64data = reader.result.split('data:image/*;base64,');
+    //             console.log(reader.result.length);
+    //             $.post({
+    //                 url: window.location + '/uploadprofilephoto',
+    //                 data: {
+    //                     id: localStorage.getItem('uid'),
+    //                     image: reader.result
+    //                 }
+    //             })
+    //             .done(function() {
+    //                 $('#profilephoto').attr('src', reader.result);
+    //                 alert('Success');
+    //             })  
+    //             .fail(function() {
+    //                 alert('An Error Occurred! Please Try again');
+    //             })
+    //         }
+
+    //         reader.readAsDataURL(file);
+    //     }
+        
+    // })
 });

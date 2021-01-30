@@ -11,7 +11,7 @@ const model = {
     },
 
     uploadProfilePhoto: (input, cb) => {
-        return db.query('CALL pr_upload_profile_pic(?, ?)', [input.id, input.image], cb);
+        return db.query('CALL pr_upload_profile_pic(?, ?)', [input.id, input.data], cb);
     }
 }
 
