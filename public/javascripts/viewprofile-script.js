@@ -120,8 +120,8 @@ $(document).ready(function () {
                         // console.log(imgSrc);
                         $('#profilephoto').attr('src', imgSrc);
                     } else if (data.success == 0) {
-                        alert('Please upload a valid photo')
-                    }
+                        alert(data.err)
+                    } 
                 },
                 fail: function(message) {
                     alert(message)

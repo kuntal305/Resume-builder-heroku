@@ -87,16 +87,16 @@ const profileController = {
             // req.body contains information of text fields, if there were any
 
             if (req.fileValidationError) {
-                return res.send(req.fileValidationError);
+                return res.send({ success: 0, err: req.fileValidationError});
             }
             else if (!req.file) {
-                return res.send('Please select an image to upload');
+                return res.send({ success: 0, err: 'Please select an image to upload' });
             }
             else if (err instanceof multer.MulterError) {
-                return res.send(err);
+                return res.send({ success: 0, err: err });
             }
             else if (err) {
-                return res.send(err);
+                return res.send({ success: 0, err: err });
             }
 
             var options = {
