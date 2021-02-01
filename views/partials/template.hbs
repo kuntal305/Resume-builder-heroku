@@ -2,7 +2,7 @@
     <div id="template-data">
         <div id="temp-main">
             {{#if basic.profile_image}}
-                <img src={{basic.profile_image}} alt="" id="cvphoto">
+                <img src="data:image/jpeg;base64,{{basic.profile_image}}" alt="" id="cvphoto">
             {{/if}}
             <h1 id="temp-name">{{basic.first_name}} {{basic.last_name}}</h1>
             <p>{{basic.email}} | {{basic.contact_no}}</p>

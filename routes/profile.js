@@ -7,11 +7,11 @@ router.get('/', isLoggedIn, profileController.viewProfile);
 
 router.get('/user_info', isLoggedIn, profileController.getUserId);
 
-router.post('/changepassword', profileController.changePassword);
+router.post('/changepassword', isLoggedIn, profileController.changePassword);
 
 router.put('/uploadprofilephoto/:id', isLoggedIn, profileController.uploadProfilePhoto);
 
-router.get('/uploadprofilephoto', isLoggedIn, (req, res) => {
+router.get('/uploadprofilephoto', (req, res) => {
     res.redirect('/');
 })
 

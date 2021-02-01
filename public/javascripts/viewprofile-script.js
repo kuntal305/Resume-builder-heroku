@@ -9,8 +9,8 @@ $(document).ready(function () {
         $.get(window.location + '/user_info')
         .done(function(user) {
             localStorage.setItem('uid', user.id);
-            console.log(user);
-            $('#profilephoto').attr('src', user.profile_image);
+            // console.log(user);
+            $('#profilephoto').attr('src', 'data:image/jpeg;base64,'+ user.profile_image);
         })
     }
 
@@ -97,7 +97,7 @@ $(document).ready(function () {
     const maxSize = 50 * 1024;
 
     $('#changeprofilephoto').on("click", function() {
-        console.log('form')
+        // console.log('form')
         var formData = new FormData();
         var file = $('#uploadprofilephoto').prop('files')[0];
         formData.append('file', file);
@@ -115,8 +115,9 @@ $(document).ready(function () {
                 processData: false,
                 success: function(data) {
                     if (data.success == 1) {
+                        $('#uploadphotoform').trigger('reset');
                         var imgSrc = `data:image/${data.ext};base64,${data.string}`;
-                        console.log(imgSrc);
+                        // console.log(imgSrc);
                         $('#profilephoto').attr('src', imgSrc);
                     } else if (data.success == 0) {
                         alert('Please upload a valid photo')

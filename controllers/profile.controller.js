@@ -7,7 +7,6 @@ const profileModel = require('../models/profile.model');
 const helpers = require('.././helpers');
 
 const bcrypt = require('bcrypt');
-const { profile } = require('console');
 const { extname } = require('path');
 
 const storage = multer.diskStorage({
@@ -26,7 +25,14 @@ const profileController = {
     },
 
     getUserId (req, res) {
-        res.send(req.user);
+        var data = {
+            email: req.user.email,
+            id: req.user.id,
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            profile_image: req.user.profile_image
+        }
+        res.send(data);
     },
 
     changePassword (req, res) {
@@ -113,7 +119,7 @@ const profileController = {
                         if(err) throw err;
 
                         if(result[0][0].res == 1) {
-                            res.send({ success: 1,string: base64String, ext: extname(req.file.originalname).split('.')[1]});
+                            res.send({ success: 1, string: base64String, ext: extname(req.file.originalname).split('.')[1]});
                         } else {
                             res.sendStatus(404);
                         }
