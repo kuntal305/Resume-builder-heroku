@@ -116,7 +116,7 @@ const profileController = {
                         data: base64String
                     }
                     profileModel.uploadProfilePhoto(imageData, (err, result) => {
-                        if(err) throw err;
+                        if(err) res.send({success: 0, err: err});
 
                         if(result[0][0].res == 1) {
                             res.send({ success: 1, string: base64String, ext: extname(req.file.originalname).split('.')[1]});
