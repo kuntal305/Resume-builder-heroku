@@ -107,7 +107,7 @@ const profileController = {
             }
             var base64String = '';
             PythonShell.run('imagedetection.py', options, function(err, result) {
-                // if(err) throw err
+                if(err) res.send({success: -1, err: err});
                 // console.log('result: ', result.toString());
                 if (result != null) {
                     base64String = result.toString();
@@ -116,7 +116,7 @@ const profileController = {
                         data: base64String
                     }
                     profileModel.uploadProfilePhoto(imageData, (err, result) => {
-                        if(err) res.send({success: -1, err: err});
+                        if(err) res.send({success: 0, err: err});
 
                         if(result[0][0].res == 1) {
                             res.send({ success: 1, string: base64String, ext: extname(req.file.originalname).split('.')[1]});
