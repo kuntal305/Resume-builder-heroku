@@ -119,7 +119,7 @@ $(document).ready(function () {
                         var imgSrc = `data:image/${data.ext};base64,${data.string}`;
                         // console.log(imgSrc);
                         $('#profilephoto').attr('src', imgSrc);
-                    } else alert(data)
+                    } else alert('success '+ data.success + ' error: ' + data.error)
                 },
                 fail: function(message) {
                     alert(message)
